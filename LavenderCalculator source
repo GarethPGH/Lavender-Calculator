@@ -1,0 +1,155 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace A_different_but_similar_calculator
+{
+    public partial class LavenderCalculator : Form
+    {
+        string operand1 = string.Empty;
+        string operand2 = string.Empty;
+        string result = ""; //result of operand1 operation operand2
+        
+        char operation; //either +,-,/,x
+        public LavenderCalculator()
+        {
+            InitializeComponent();
+        }
+        //Numbers 0-9
+        private void label0_Click(object sender, EventArgs e)
+        {
+            textBox1.Text += 0;
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            textBox1.Text += '1';
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+            textBox1.Text += '2';
+        }
+        private void label3_Click(object sender, EventArgs e)
+        {
+            textBox1.Text += '3';
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+            textBox1.Text += '4';
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+            textBox1.Text += '5';
+        }
+        private void label6_Click(object sender, EventArgs e)
+        {
+            textBox1.Text += '6';
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+            textBox1.Text += '7';
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+            textBox1.Text += '8';
+        }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+            textBox1.Text += '9';
+        }
+
+        //decimal point
+        private void decimallabel_Click(object sender, EventArgs e)
+        {
+            if (!textBox1.Text.Contains('.'))
+                textBox1.Text += '.';
+        }
+        //Add
+        private void pluslabel_Click(object sender, EventArgs e)
+        {
+            operand1 = textBox1.Text;
+            operation = '+';
+            textBox1.Text = string.Empty;
+        }
+        //Subtract
+        private void minuslabel_Click(object sender, EventArgs e)
+        {
+            operand1 = textBox1.Text;
+            operation = '-';
+            textBox1.Text = string.Empty;
+        }
+        //multiply
+        private void multlabel_Click(object sender, EventArgs e)
+        {
+            operand1 = textBox1.Text;
+            operation = '*';
+            textBox1.Text = string.Empty;
+        }
+        //divide
+        private void divlabel_Click(object sender, EventArgs e)
+        {
+            operand1 = textBox1.Text;
+            operation = '/';
+            textBox1.Text = string.Empty;
+        }
+        //equals Do all actual computations here in a switch statement
+        private void equalslabel_Click(object sender, EventArgs e)
+        {
+            operand2 = textBox1.Text;
+            double opr1, opr2;
+            double.TryParse(operand1, out opr1);
+            double.TryParse(operand2, out opr2);
+            
+            switch (operation)
+            {
+                case '+':
+                    result= (opr1 + opr2).ToString ();
+                    break;
+                case '-':
+                    result = (opr1 - opr2).ToString();
+                    break;
+                case '*':
+                    //Fixed problem of mult not working by using a button image with an x instead of setting the button to x.
+                    result = (opr1 * opr2).ToString();  
+                    break;
+                case '/':
+                    if (opr2 != 0)
+                    {
+                        result = (opr1 / opr2).ToString();
+                    }
+                    else
+                    {
+                        MessageBox.Show("You can not divide by zero."); 
+                    }
+                    break;
+            }
+            
+                textBox1.Text = result.ToString(); 
+        
+        }
+        //clearform
+        private void clearlabel_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = "";
+            operand1 = string.Empty;
+            operand2 = string.Empty;
+        }
+        //txtbox
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+           
+        }
+    }
+}
