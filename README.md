@@ -1,4 +1,4 @@
-My-Projects Personal Projects for Learning 
+Lavender Calculator A Pretty Simple Calculator
 ===========
 !!My First Working Program!! (that isn't tied to a command prompt).
 C# Simple Calculator. Original code does not work.
